@@ -21,7 +21,7 @@ tags: [jekyll, github]
 
 OK，操作部分就完成了，你的网站本地路径为 D:\work\username.github.com，等 Github 部署完成后你就可以在 [http://username.github.com](http://username.github.com]/) 访问你的网站了。
 
-进入本地目录 D:\work\username.github.com，看一下这里的结构，\_includes 里有 Jekyll-Bootstrap 相关的功能和 themes 主题，\_layouts 就是网页的模板文件，不过运行时会被主题中的同名文件覆盖，\_plugins 顾名思义是插件，\_posts 就是我们放文章的地方了，文件名要改成 `2012-09-28-using-jekyll-bootstrap-host-blog-on-github.mk` 这种 `年-月-日-文章标题.后缀名` 格式，\_site 是本地运行时调用的文件夹，关于如何在本地运行，请参考 [本地搭建Jekyll博客环境](http://ppxu.net/blog/2012/09/28/setup-local-jekyll-environment/)，\_assets里是一些样式文件。
+进入本地目录 D:\work\username.github.com，看一下这里的结构，\_includes 里有 Jekyll-Bootstrap 相关的功能和 themes 主题，\_layouts 就是网页的模板文件，可以使用主题中的模板代替，\_plugins 顾名思义是插件，\_posts 就是我们放文章的地方了，文件名要改成 `2012-09-28-using-jekyll-bootstrap-host-blog-on-github.mk` 这种 `年-月-日-文章标题.后缀名` 格式，\_site 是本地运行时调用的文件夹，关于如何在本地运行，请参考 [本地搭建Jekyll博客环境](http://ppxu.net/blog/2012/09/28/setup-local-jekyll-environment/)，\_assets里是一些样式文件。
 
 \_config.yml 是网站的配置文件，可以根据自己情况自行调整，具体设置看 [这里](http://jekyllbootstrap.com/usage/blog-configuration.html)。
 
