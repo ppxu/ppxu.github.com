@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Hello PPxu!
+title: Hello PPxu！
 tagline: 1, 2, 3...
 ---
 {% include JB/setup %}

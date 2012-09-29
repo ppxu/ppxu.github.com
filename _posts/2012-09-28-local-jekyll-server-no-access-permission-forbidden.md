@@ -7,7 +7,7 @@ tags: [jekyll, encode]
 ---
 {% include JB/setup %}
 
-在上篇 [本地搭建Jekyll博客环境](http://ppxu.net/blog/2012/09/28/setup-local-jekyll-environment/)中，讲了如何在本地搭建 [Jekyll](http://jekyllrb.com/) 服务器，虽然看似繁琐，其实操作都很方便，但在这过程中我也碰到了一个问题，求解了好久，在这里贴一下。
+在上篇 [本地搭建Jekyll博客环境](http://ppxu.net/blog/2012/09/27/setup-local-jekyll-environment/)中，讲了如何在本地搭建 [Jekyll](http://jekyllrb.com/) 服务器，虽然看似繁琐，其实操作都很方便，但在这过程中我也碰到了一个问题，求解了好久，在这里贴一下。
 
 在搭建的第6步，运行 `jekyll --server` 后， 打开 [http://localhost:4000/](http://localhost:4000/)，出现的是一个错误页面
 
