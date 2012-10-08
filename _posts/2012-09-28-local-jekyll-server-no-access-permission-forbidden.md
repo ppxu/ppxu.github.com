@@ -2,8 +2,8 @@
 layout: post
 title: "本地Jekyll禁止访问问题"
 description: "local jekyll server no access permission forbidden"
-category: "website"
-tags: [jekyll, encode]
+category: website
+tags: "jekyll, encode, "
 ---
 {% include JB/setup %}
 

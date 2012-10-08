@@ -10,10 +10,12 @@ markdown: rdiscount
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
-title : PPxu's Blog
+title : 小前端
 author :
   name : PPxu
   email : xyang0110@126.com
+keywords : 前端, front end, html, css, javascript
+description : 这是一个简单的小前端，守着自己心中的寂寞
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt

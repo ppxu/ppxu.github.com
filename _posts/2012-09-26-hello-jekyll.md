@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Hello，Jekyll
-description: "htllo jekyll"
+description: "hello jekyll"
 category: website
-tags: [github, jekyll]
+tags: "github, jekyll, "
 ---
 {% include JB/setup %}
 
