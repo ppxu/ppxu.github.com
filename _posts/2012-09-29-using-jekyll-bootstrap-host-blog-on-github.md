@@ -3,7 +3,7 @@ layout: post
 title: "使用Jekyll-Bootstrap在Github上搭建博客"
 description: "using jekyll-bootstrap host blog on github"
 category: website
-tags: "jekyll, github, "
+tags: [jekyll, github]
 ---
 {% include JB/setup %}
 

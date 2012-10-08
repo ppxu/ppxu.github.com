@@ -3,7 +3,7 @@ layout: post
 title: "本地搭建Jekyll博客环境"
 description: "setup local jekyll environment"
 category: website
-tags: "jekyll, ruby, gem, "
+tags: [jekyll, ruby, gem]
 ---
 {% include JB/setup %}
 
