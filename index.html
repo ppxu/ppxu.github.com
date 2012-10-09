@@ -34,11 +34,30 @@ tagline: 你知道，就算大雨让这座城市颠倒，我会给你怀抱
 </div>
 
 <div class="span4">
-  <!-- <div class="card">
-    <a href="/about.html"><img src="assets/img/zihan.png" width="220" /></a>
-  </div> -->
   <div class="weibo">
   	<iframe width="100%" height="400" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=400&fansRow=2&ptype=1&speed=0&skin=2&isTitle=0&noborder=0&isWeibo=1&isFans=0&uid=1276446107&verifier=acf6b5a8&dpc=1"></iframe>
   </div>
+  <h3>最近发表</h3>
+  <ul class="unstyled">
+    {% for post in site.posts limit: 5 %}
+    <li class="list">
+      <span class="badge badge-info">{{ forloop.index }}</span><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <h3>文章类别</h3>
+  <ul class="tag_box clearfix">
+  {% assign categories_list = site.categories %}
+  {% include JB/categories_list %}
+  </ul>
+  <h3>标签</h3>
+  <ul class="tag_box clearfix">
+  {% assign tags_list = site.tags %}
+  {% include JB/tags_list %}
+  </ul>
+  <h3>链接</h3>
+  <ul class="unstyled">
+    <li><i class="icon-cog"></i><a href="https://github.com/ppxu/ppxu.github.com">source code</a></li>
+  </ul>
 </div>
 </div>

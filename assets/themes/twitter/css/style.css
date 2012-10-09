@@ -47,6 +47,7 @@ html, body {
 }
 .tag_box li {
 	line-height:28px;
+	float: left;
 }
 .tag_box.inline li {
 	float:left;
@@ -72,4 +73,21 @@ html, body {
 	height: 117px;
 	background-color: white;
 	margin-bottom: 10px;
+}
+.unstyled{
+	margin-top: 10px;
+}
+.unstyled li{
+	line-height: 24px;
+}
+.unstyled li span{
+	font-size: 12px;
+}
+.unstyled li a{
+	font-size: 15px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 270px;
+	display: inline-block;
 }
