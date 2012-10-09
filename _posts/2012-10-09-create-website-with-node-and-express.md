@@ -64,7 +64,7 @@ OK，基于 __node.js__ 和 __express__ 的网站就搭好啦！
 
 注册之后，你会看到 appfog 提供了非常多的应用环境
 
-![appfog](assets/img/af.jpg)
+![appfog](./assets/img/af.jpg)
 
 这里我选择了 Node Express，选 Node 应该也可以。
 
