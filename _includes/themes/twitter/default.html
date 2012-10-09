@@ -1,62 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>{{ page.title }} - {{ site.title }}</title>
+<head>
+  <meta charset="utf-8" />
+  <title>{{ page.title }} - {{ site.title }}</title>
 
-    <meta name="author" content="{{ site.author.name }}" />
-    <meta name="keywords" content="{% if page.tags %}{{ page.tags }}{% endif %}{{ site.keywords }}" />
-    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+  <meta name="author" content="{{ site.author.name }}" />
+  <meta name="keywords" content="{% if page.tags %}{{ page.tags }}{% endif %}{{ site.keywords }}" />
+  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 
-    <!-- Le styles -->
-    <link rel="icon" type="image/x-icon" href="/favicon.png" />
-    <link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all" />
+  <!-- Le styles -->
+  <link rel="icon" type="image/x-icon" href="/favicon.png" />
+  <link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all" />
 
-    <!-- Le fav and touch icons -->
+  <!-- Le fav and touch icons -->
   <!-- Update these with your own images
     <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-  -->
-  </head>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">--></head>
 
-  <body>
+<body>
 
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="brand" href="{{ HOME_PATH }}">{{ site.title }}</a>
-          <ul class="nav">
-            {% assign pages_list = site.pages %}
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="{{ HOME_PATH }}">{{ site.title }}</a>
+        <ul class="nav">
+          {% assign pages_list = site.pages %}
             {% assign group = 'navigation' %}
             {% include JB/pages_list %}
-          </ul>
-        </div>
+        </ul>
       </div>
     </div>
+  </div>
 
-    <div class="container">
+  <div class="container">
 
-      <div class="content">
-        {{ content }}
-      </div>
+    <div class="content">{{ content }}</div>
 
-      <footer>
-        <p>&copy; {{ site.author.name }} 2012
-          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
-          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
-        </p>
-      </footer>
+    <footer>
+      <p>
+        &copy; {{ site.author.name }} 2012
+          with help from
+        <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+        and
+        <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+      </p>
+    </footer>
 
-    </div> <!-- /container -->
+  </div>
+  <!-- /container -->
+  {% include JB/analytics %}
+  <script type="text/javascript" src="https://raw.github.com/braitsch/js3/master/src/JS3.js"></script>
+  <script type="text/javascript">
 
-    {% include JB/analytics %}
-  </body>
+var canvas;
+var joints = 10;
+var sm = [];
+var lg = [];
+var ln = [];
+var fill = ['#948C75', '#7A6A53'];
+var line = ['#D9CEB2', '#99B2B7'];
+
+function init()
+{
+    canvas = new JS3('cnvs');
+    canvas.drawClean = true;
+    canvas.interactive = true;
+    canvas.background = '#D5DED9';
+    addBalls(); onStart();
+}
+
+function addBalls()
+{
+    var n = canvas.width / joints;
+    for (var i=0; i < joints; i++) {
+        var st = Math.round(Math.random());
+        var c1 = new JS3Circle();
+            c1.size = 50;
+            c1.speed = JS3.getRandomValue(1, 1.5);
+            c1.strokeWidth = 2;
+            c1.fillColor = fill[st];
+            c1.strokeColor = line[st];
+            c1.x = n*i;
+            c1.y = Math.random() * canvas.height;
+            c1.dragStart = onDragStart;
+            c1.dragComplete = onDragComplete;
+        lg.push(c1);
+        var c2 = new JS3Circle();
+            c2.size = 25;
+            c2.speed = JS3.getRandomValue(.5, 1);
+            c2.strokeWidth = 2;
+            c2.fillColor = fill[st];
+            c2.strokeColor = line[st];
+            c2.x = c1.x + JS3.getRandomValue(30, 50);
+            c2.y = Math.random() * canvas.height;
+            c2.dragStart = onDragStart;
+            c2.dragComplete = onDragComplete;
+        sm.push(c2);
+        ln.push(new JS3Line({strokeColor:line[st], strokeWidth:2}));
+    };
+    for (var i=0; i < joints; i++) canvas.addChild(ln[i]);
+    for (var i=0; i < joints; i++) canvas.addChild(sm[i]);
+    for (var i=0; i < joints; i++) canvas.addChild(lg[i]);
+}
+
+function move()
+{
+    for (var i=0; i < joints; i++) {
+        if (sm[i].dragging != true) sm[i].x -= sm[i].speed;
+        if (lg[i].dragging != true) lg[i].x -= lg[i].speed;
+        ln[i].x1 = sm[i].x + sm[i].width/2;
+        ln[i].y1 = sm[i].y + sm[i].height/2
+        ln[i].x2 = lg[i].x + lg[i].width/2;
+        ln[i].y2 = lg[i].y + lg[i].height/2
+    }
+     for (var i=0; i < joints; i++) {
+        if (sm[i].x < - 25){
+            sm[i].x = canvas.width + 25;
+            lg[i].x = sm[i].x + JS3.getRandomValue(30, 50);
+        };
+    }
+}
+
+function onDragStart(e)
+{
+    e.target.dragging = true;
+}
+
+function onDragComplete(e)
+{
+    e.target.dragging = false;
+}
+
+// button handlers //
+
+function onStart()
+{
+    canvas.run(move);
+}
+
+function onStop()
+{
+    canvas.stop(move);
+}
+
+init();
+</script></body>
 </html>
