@@ -68,12 +68,8 @@ html, body {
 	border:1px solid #4C964D;
 	color:#FFF;
 }
-#swf-border {
-	height: 121px;
-	padding: 4px 4px 0 4px;
-	background-image: url('http://ppxu.net/assets/img/canvas-frame.png');
-}
-#swf {
+.swf {
 	height: 117px;
-	background-color: darkGray;
+	background-color: white;
+	margin-bottom: 10px;
 }
