@@ -54,8 +54,8 @@ OK，基于 __node.js__ 和 __express__ 的网站就搭好啦！
 对 __jade__ 需要更多的了解请参考 [jade documentation](https://github.com/visionmedia/jade#readme) 和 [Jade模板引擎入门教程](http://www.csser.com/board/4f3f516e38a5ebc978000508)。
 
 我们在启动服务器后，如果修改了网站内容，那么就需要先 `ctrl+c` 停止服务器，再重新启动，才能看到改动，如果对这一点也感到很不爽的话，那么你需要这个 —— [nodemon](https://github.com/remy/nodemon)。
-		npm install -g nodemon
-		nodemon app.js
+	npm install -g nodemon
+	nodemon app.js
 以这种方式启动服务器，改动文件后，无需停止再重启，只要刷新页面，即可生效。
 
 最后讲如何部署网站，这里要推荐一个非常棒的应用 —— [appfog](http://www.appfog.com/)。
@@ -73,17 +73,17 @@ OK，基于 __node.js__ 和 __express__ 的网站就搭好啦！
 然后输入一个应用名，点击 `Create App`，稍等片刻，应用环境就搭好了。
 
 然后会直接进入控制面板，能看到资源使用情况，点击 `Visit Live Site`，就可以看到你的网站了。当然，这时候只有一句话而已
-		Hello from AppFog.com
+> Hello from AppFog.com
 接下来我们需要把我们前面创建好的网站传上去。
 
 这里需要用到 [Ruby](http://www.ruby-lang.org/) 和 [gem](http://rubygems.org/)，关于如何安装 __Ruby__ 环境，可以参考之前的文章 [本地搭建Jekyll博客环境](http://ppxu.net/blog/2012/09/27/setup-local-jekyll-environment/) 的前面部分。
 
 准备工作都完成后，打开 `开始菜单 - 所有程序 - Ruby - Start Command Prompt with Ruby`，执行
-		gem install af
+	gem install af
 安装 appfog 控制工具，然后运行
-		af login
+	af login
 输入注册邮箱和密码登录。最后切换到网站目录（`D:\work\ppxu`），运行
-		af update appname
+	af update appname
 这里 appname 是你在添加应用的填的名字，稍等片刻，网站就上传完成了。
 
 此时再到 appfog 控制面板，点击 `Visit Live Site`，是不是之前本地搭好的那个网站？
