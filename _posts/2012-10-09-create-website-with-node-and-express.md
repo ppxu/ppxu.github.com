@@ -74,6 +74,7 @@ OK，基于 __node.js__ 和 __express__ 的网站就搭好啦！
 
 然后会直接进入控制面板，能看到资源使用情况，点击 `Visit Live Site`，就可以看到你的网站了。当然，这时候只有一句话而已
 > Hello from AppFog.com
+
 接下来我们需要把我们前面创建好的网站传上去。
 
 这里需要用到 [Ruby](http://www.ruby-lang.org/) 和 [gem](http://rubygems.org/)，关于如何安装 __Ruby__ 环境，可以参考之前的文章 [本地搭建Jekyll博客环境](http://ppxu.net/blog/2012/09/27/setup-local-jekyll-environment/) 的前面部分。
