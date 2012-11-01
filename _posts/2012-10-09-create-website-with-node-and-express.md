@@ -17,8 +17,8 @@ tags: [nodejs, express, jade, stylus, appfog]
 		express -V
 检查下，如果显示类似 `3.0.0rc4`，则安装成功。
 
-3. 这里我们要用 [jade](http://jade-lang.com/) 和 [stylus](http://learnboost.github.com/stylus/) 作为 html 模板和 css，__express__ 默认使用的就是 __jade__，来到工作目录，比如 `D:\work`，执行
-		express -c stylus ppxu
+3. 这里我们要用 [jade](http://jade-lang.com/) 和 [less](http://www.lesscss.net/) 作为 html 模板和 css，__express__ 默认使用的就是 __jade__，来到工作目录，比如 `D:\work`，执行
+		express -c less ppxu
 执行完毕后会有提示，我们按照提示执行
 		cd ppxu
 		npm install
@@ -29,7 +29,7 @@ tags: [nodejs, express, jade, stylus, appfog]
 			|	|---.bin
 			|   |---express
 			|   |---jade
-			|   |---stylus
+			|   |---less-middleware
 			|---public					//assets文件
 			|   |---images
 			|   |---javascripts
