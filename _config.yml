@@ -6,6 +6,7 @@ exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 auto: true
 pygments: true
 markdown: rdiscount
+lsi: true
 
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
@@ -14,8 +15,8 @@ title : 小前端
 author :
   name : PPxu
   email : xyang0110@126.com
-keywords : 前端, front end, html, css, javascript
-description : 这是一个简单的小前端，守着自己心中的寂寞
+keywords : 前端, frontend, html, css, javascript，github，jekyll
+description : 我是一个小前端呀从来没烦恼
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt

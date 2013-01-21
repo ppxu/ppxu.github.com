@@ -3,7 +3,7 @@ layout: post
 title: "使用node.js和express搭建网站"
 description: "create website with node and express"
 category: website
-tags: [nodejs, express, jade, stylus, appfog]
+tags: [nodejs, express, jade, less, appfog]
 ---
 {% include JB/setup %}
 

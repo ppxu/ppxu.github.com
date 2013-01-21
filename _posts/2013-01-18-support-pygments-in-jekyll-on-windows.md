@@ -35,7 +35,7 @@ tags: [jekyll, pygments, python, windows]
 有不满意的话还可以自己修改那个样式文件。
 
 另外，我在第6步时碰到了一个问题，运行报错
-		Liquid Exception: No such file or directory ...
+	Liquid Exception: No such file or directory ...
 在网上查了下是 pygments.rb 的问题，用 gem 安装最新版的 [pygments.rb](http://rubygems.org/gems/pygments.rb) 就没问题了。
 
 -------------------
