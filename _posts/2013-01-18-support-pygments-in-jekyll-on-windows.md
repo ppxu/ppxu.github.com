@@ -29,15 +29,7 @@ tags: [jekyll, pygments, python, windows]
 
 6. 需要语法高亮的代码片段要放在这样的格式下
 		{% highlight javascript %}
-			KISSY.add('ppxu', funciton(S){
-				var name = 'ppxu';
-				var ppxu = {
-					init: function(nm){
-						console.log(nm);
-					}
-				};
-				return ppxu;
-			});
+			...
 		{% endhighlight %}
 
 7. 运行
