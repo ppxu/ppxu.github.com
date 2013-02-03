@@ -31,7 +31,7 @@ tags: [jekyll, pygments, python, windows]
 	并把生成的样式文件加到我们的网页中。
 	如果提示找不到指定路径，先建好对应的文件夹就可以了。
 
-6. 需要语法高亮的代码片段要放在标签对 `{% highlight javascript %}` 和 `{% endhighlight %}` 之间。
+6. 需要语法高亮的代码片段要放在标签对 `{%'' highlight javascript ''%}` 和 `{%'' endhighlight ''%}` 之间。
 
 7. 运行
 
