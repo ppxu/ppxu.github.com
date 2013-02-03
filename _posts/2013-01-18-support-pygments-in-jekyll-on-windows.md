@@ -31,7 +31,7 @@ tags: [jekyll, pygments, python, windows]
 	并把生成的样式文件加到我们的网页中。
 	如果提示找不到指定路径，先建好对应的文件夹就可以了。
 
-6. 需要语法高亮的代码片段要放在标签对 `highlight language` 和 `endhighlight` 之间，把language 换成代码片段的具体语言，这两个标签要放在括号 `{%  %}` 中。
+6. 需要语法高亮的代码片段要放在标签对 `highlight language` 和 `endhighlight` 之间，把language 换成代码片段的具体语言即可，这两个标签要放在括号 `{%  %}` 中。
 
 7. 运行
 
@@ -58,7 +58,7 @@ KISSY.add('ppxu', funciton(S){
 在网上查了下是 pygments.rb 的问题，用 gem 安装最新版的 [pygments.rb](http://rubygems.org/gems/pygments.rb) 就没问题了。
 
 -------------------
-####参考资料
+#### 参考资料
 
 * [http://joshua-leung.me/Software%20Tricks/2012/05/04/installing-pygments/](http://joshua-leung.me/Software%20Tricks/2012/05/04/installing-pygments/)
 * [http://skim.la/2010/02/14/how-to-run-jekyll-pygmentize-on-windows/](http://skim.la/2010/02/14/how-to-run-jekyll-pygmentize-on-windows/)

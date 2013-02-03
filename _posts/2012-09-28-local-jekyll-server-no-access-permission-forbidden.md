@@ -35,7 +35,7 @@ Jekyll 有一种调试方法是运行 `jekyll --no-auto`，可以看到详细的
 这样改了之后，再访问 [http://localhost:4000/](http://localhost:4000/)，OK，成功了，生活如此美好，话说静态页面速度就是快啊哈哈～
 
 -------------------
-####参考资料
+#### 参考资料
 
 * [https://groups.google.com/forum/?fromgroups=#!topic/jekyll-rb/86PEfzf1FS0](https://groups.google.com/forum/?fromgroups=#!topic/jekyll-rb/86PEfzf1FS0)
 * [https://github.com/mojombo/jekyll/issues/626](https://github.com/mojombo/jekyll/issues/626)

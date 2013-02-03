@@ -14,6 +14,7 @@ tags: [jekyll, github]
 1. 在 Github 上创建一个 repository，名字叫 `username.github.com`，记得把 `username` 换成自己的用户名，后文都如此。
 
 2. 到一个你准备放网站文件的目录，比如 D:\work\，执行以下命令
+
 		git clone https://github.com/plusjade/jekyll-bootstrap.git username.github.com
 		cd username.github.com
 		git remote set-url origin git@github.com:username/username.github.com.git
@@ -28,24 +29,30 @@ OK，操作部分就完成了，你的网站本地路径为 D:\work\username.git
 archive.html，categories.html，index.md，pages.html，tags.html 分别是存档页，类别页，主页，页面页，标签页。
 
 当你在 \_posts 里新加了一篇文章，只需执行如下代码
+
 	git add .
 	git commit -m "Add new content"
 	git push origin master
+
 即可更新到线上，即时生效，速度灰常快哦～
 
 再讲一下如何使用自己的域名，首先你要在网站目录下新建一个 CNAME 文件，里面只有一行，就是你的域名，比如：
+
 	ppxu.net
+
 然后到你的域名服务商那里，将域名解析改成：
+
 	ppxu.net
 	@                        A              204.232.175.78
 	www					     CNAME			username.github.com
 	username.github.com      A              204.232.175.78
+
 这是我失败了很多次后终于找到的正确方法。
 
 基本上这样你的网站就创建完成了，你可以继续研究 [这个](http://jekyllbootstrap.com/usage/index.html) 或者 [这个](http://jekyllbootstrap.com/developers/index.html) 来更好的控制你的网站。
 
 -------------------
-####参考资料
+#### 参考资料
 
 * [http://www.yangzhiping.com/tech/wordpress-to-jekyll.html](http://www.yangzhiping.com/tech/wordpress-to-jekyll.html)
 * [http://feelapi.com/archives/324](http://feelapi.com/archives/324)
