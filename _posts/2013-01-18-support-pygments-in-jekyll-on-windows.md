@@ -27,11 +27,35 @@ tags: [jekyll, pygments, python, windows]
 并把生成的样式文件加到我们的网页中。
 如果提示找不到指定路径，先建好对应的文件夹就可以了。
 
-	__注意__，Pygments 只能作用于html文件，不能用于md文件。
+6. 需要语法高亮的代码片段要放在这样的格式下
+		{% highlight javascript %}
+			KISSY.add('ppxu', funciton(S){
+				var name = 'ppxu';
+				var ppxu = {
+					init: function(nm){
+						console.log(nm);
+					}
+				};
+				return ppxu;
+			});
+		{% endhighlight %}
 
-6. 运行
+7. 运行
 		jekyll --server
-如果一切顺利，就能看到效果了。
+如果一切顺利，就能看到如下效果了。
+
+{% highlight javascript %}
+KISSY.add('ppxu', funciton(S){
+	var name = 'ppxu';
+	var ppxu = {
+		init: function(nm){
+			console.log(nm);
+		}
+	};
+	return ppxu;
+});
+{% endhighlight %}
+
 有不满意的话还可以自己修改那个样式文件。
 
 另外，我在第6步时碰到了一个问题，运行报错
