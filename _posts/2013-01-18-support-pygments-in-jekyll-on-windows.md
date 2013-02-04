@@ -33,7 +33,7 @@ tags: [jekyll, pygments, python, windows]
 
 6. 需要语法高亮的代码片段要放在标签对 `highlight language` 和 `endhighlight` 之间，把language 换成代码片段的具体语言即可，注意这两个标签要放在一对大括号和百分号中，像这样
 
-		{% high... javascript %}
+		{% h... javascript %}
 		KISSY.add('ppxu', funciton(S){
 			var name = 'ppxu';
 			var ppxu = {
@@ -43,7 +43,7 @@ tags: [jekyll, pygments, python, windows]
 			};
 			return ppxu;
 		});
-		{% endhigh... %}
+		{% e... %}
 
 7. 运行
 
