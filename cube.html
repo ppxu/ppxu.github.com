@@ -1,10 +1,10 @@
----
-layout: page
-title: "cube"
-description: ""
----
-{% include JB/setup %}
-
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>
+PPxu's cube
+</title>
+<meta http-equiv=Content-Type content="text/html;charset=utf-8">
 <style type="text/css">
 body{background:#fff;}
 h2{text-align:center;}
@@ -196,7 +196,7 @@ function cube(){
 		this.curcube=this.cubetype[this.curId];		//设置当前方块类型
 		this.shownext();							//预览下一个
 		this.newpos();								//新方块出现
-
+		
 	},
 	//新方块出现
 	this.newpos=function(){
@@ -270,8 +270,8 @@ function cube(){
 		this.newpos();
 		this.shownext();
 	}
-
-}
+	
+}	
 
 var cub=new cube();
 var timer;				//计时器
@@ -306,7 +306,7 @@ function bstart(){
 	timer=window.setInterval(run, speed);	//好像直接不能对cub.movedown设置，所以用调用
 	butstart.setAttribute("disabled",true);
   	butpause.removeAttribute('disabled');
-  	butstop.removeAttribute('disabled');	//按钮状态
+  	butstop.removeAttribute('disabled');	//按钮状态	
   	return false;
 }
 
@@ -363,7 +363,7 @@ function keyhit(evt){
 	case 40:
 		cub.movedown();
 		break;
-
+		
 	}
 }
 

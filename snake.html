@@ -1,0 +1,307 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>
+ppxu's snake
+</title>
+<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+<style type="text/css">
+body{background:#fff;text-align:center;margin:0;padding:0;}
+#snake{background:#ddd;height:600px;width:600px;margin:10px auto;
+-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;border:1px solid #CCC;
+-webkit-box-shadow:0 0 2px  #CCC;-moz-box-shadow:0 0 2px  #CCC;}
+#area{background:#fff;height:401px;width:400px;margin:10px auto 10px;border:2px solid #808080}
+table{border-collapse:collapse;}
+td{height:20px;width:20px;margin:0;background:#fff;border:1px dotted #ccc;}
+form{position:relative;left:-10px;top:10px;}
+form input{margin:5px 0;padding:0;width:60px;height:30px;text-align:center;line-height:30px;vertical-align:middle;}
+#score{position:relative;left:20px;background:#fff;width:100px;text-align:center;}
+</style>
+
+<script typt="text/javascript">
+
+window.onload=initall;
+
+//画地图
+function crea_tab(){
+	var tr=[];
+	var td=[];
+	var tab=document.getElementById("tab");
+	var tbody = document.createElement("tbody");
+	for(var i=0;i<20;i++)
+	{
+		tr[i]=document.createElement("tr");
+		for(var j=0;j<20;j++)
+		{
+			td[j]=document.createElement("td");
+			tr[i].appendChild(td[j]);
+		}
+		tbody.appendChild(tr[i]);
+	}
+	tab.appendChild(tbody);
+}
+
+//蛇的类
+function snake(){
+	this.sk=[],				//蛇的数组
+	this.dir=1,				//方向
+	this.newx=-1,			//食物坐标
+	this.newy=-1,
+	this.score=0,				//分数
+	//产生新的食物
+	this.newfood=function(){
+		do{
+			this.newx=Math.floor(Math.random()*20);
+			this.newy=Math.floor(Math.random()*20);				//随机点
+		}while(this.newok(this.newx,this.newy));	//不在蛇上
+		document.getElementById("tab").rows[this.newx].cells[this.newy].style.backgroundImage="url(./assets/img/snake/f.png)";		//食物图片
+	},
+	//判断点是否在蛇上
+	this.newok=function(x,y){
+		var l=this.sk.length
+		for(var k=0;k<l;k++){
+			if(this.sk[k][0]==x && this.sk[k][1]==y)
+			return true;
+		}
+		return false;
+	},
+	//初始化蛇
+	this.inisnake=function(){
+		this.sk.unshift([9,7]);
+		this.sk.unshift([9,8]);
+		this.sk.unshift([9,9]);
+		this.drawsnake();
+		this.newfood();
+	},
+	//画蛇
+	this.drawsnake=function(){
+		var alltd=document.getElementsByTagName("td");
+		for(var n=0;n<alltd.length;n++)
+			alltd[n].style.background="#fff";			//先清空
+		var bbb=document.getElementById("tab")
+		var l=this.sk.length;
+		switch(this.dir){
+			case 1:											//向右
+				bbb.rows[this.sk[0][0]].cells[this.sk[0][1]].style.backgroundImage="url(./assets/img/snake/h1.png)";
+				break;
+			case 2:											//向下
+				bbb.rows[this.sk[0][0]].cells[this.sk[0][1]].style.backgroundImage="url(./assets/img/snake/h2.png)";
+				break;
+			case 3:											//向左
+				bbb.rows[this.sk[0][0]].cells[this.sk[0][1]].style.backgroundImage="url(./assets/img/snake/h3.png)";
+				break;
+			case 4:											//向上
+				bbb.rows[this.sk[0][0]].cells[this.sk[0][1]].style.backgroundImage="url(./assets/img/snake/h4.png)";		//蛇头，根据方向设了四种图，不知道有木有更好的方法
+				break;
+		}
+		for(var i=1;i<l;i++){
+			bbb.rows[this.sk[i][0]].cells[this.sk[i][1]].style.background="url(./assets/img/snake/b.png) no-repeat center center";	//蛇的身体
+		}
+		if(this.newx>-1 && this.newy>-1)
+			bbb.rows[this.newx].cells[this.newy].style.backgroundImage="url(./assets/img/snake/f.png)";	//食物
+	},
+	//运行函数
+	this.run=function(){
+		switch(this.dir){
+			case 1:											//向右
+				var p=[this.sk[0][0],this.sk[0][1]+1];
+				break;
+			case 2:											//向下
+				var p=[this.sk[0][0]+1,this.sk[0][1]];
+				break;
+			case 3:											//向左
+				var p=[this.sk[0][0],this.sk[0][1]-1];
+				break;
+			case 4:											//向上
+				var p=[this.sk[0][0]-1,this.sk[0][1]];
+				break;
+		}
+		if(p[0]<0 || p[0]>19 || p[1]<0 || p[1]>19){			//撞墙了
+			window.clearInterval(timer);					//清除及初始化
+			alert("杯具了，分数是"+this.score);
+			this.sk=[];
+			this.dir=1;
+			this.newx=-1;
+			this.newy=-1;
+			document.getElementById("score").value="";
+			var alltd=document.getElementsByTagName("td");
+			for(var n=0;n<alltd.length;n++)
+				alltd[n].style.background="#fff";
+			butstart.removeAttribute('disabled');
+			butpause.setAttribute("disabled",true);
+			butstop.setAttribute("disabled",true);
+			level.removeAttribute('disabled');
+			level.value="300";
+			return;
+		}
+		else if(p[0]==this.newx && p[1]==this.newy){					//吃到食物
+			this.sk.unshift(p);			//加到蛇的数组
+			this.drawsnake();
+			this.newfood();
+			this.score=10*(this.sk.length-3);
+			document.getElementById("score").value=this.score;
+		}
+		else if(this.newok(p[0],p[1]))						//撞到自己
+		{
+			window.clearInterval(timer);
+			alert("杯具了，分数是"+this.score);
+			this.sk=[];
+			this.dir=1;
+			this.newx=-1;
+			this.newy=-1;
+			document.getElementById("score").value="";
+			var alltd=document.getElementsByTagName("td");
+			for(var n=0;n<alltd.length;n++)
+				alltd[n].style.background="#fff";
+			butstart.removeAttribute('disabled');
+			butpause.setAttribute("disabled",true);
+			butstop.setAttribute("disabled",true);
+			level.removeAttribute('disabled');
+			level.value="300";
+			return;
+		}
+		else						//前进
+		{
+			this.sk.unshift(p);		//加到蛇头
+			this.sk.pop();			//删除蛇尾
+		}
+		this.drawsnake();
+	},
+	//开始
+	this.start=function(){
+		var alltd=document.getElementsByTagName("td");
+		for(var n=0;n<alltd.length;n++)
+			alltd[n].style.background="#fff";
+		this.inisnake();
+		this.run();
+	}
+
+}
+
+var snak=new snake();	//蛇的对象
+var timer;				//计时器
+var speed;				//速度
+var butstart;
+var butpause;
+var butstop;			//三个按钮
+var level;				//难度选择
+var cycleCount=0;
+
+//初始
+function initall(){
+	crea_tab();			//画地图
+	butstart=document.getElementById("start");
+	butstart.onclick=bstart;					//按钮事件
+	butstart.removeAttribute('disabled');		//按钮状态
+	butpause=document.getElementById("pause");
+	butpause.onclick=bpause;
+	butpause.setAttribute("disabled",true);
+	butstop=document.getElementById("stop");
+	butstop.onclick=bstop;
+	butstop.setAttribute("disabled",true);
+	level=document.getElementById("level");
+	level.removeAttribute('disabled');
+	level.value="300";
+	document.onkeydown=keyhit;
+	document.getElementById("score").value="";
+}
+
+function go(){
+	snak.run();
+}
+
+function bstart(){
+ 	this.blur();		//释放焦点
+ 	snak=new snake();		//创建蛇
+ 	snak.start();			//开始
+ 	speed=level.value;		//设置速度
+ 	timer=window.setInterval('go();cycleCount=0', speed);
+  	butstart.setAttribute("disabled",true);
+  	butpause.removeAttribute('disabled');
+  	butstop.removeAttribute('disabled');	//按钮状态
+  	level.setAttribute("disabled",true);
+  	return false;
+}
+
+//暂停
+function bpause(){
+	this.blur();
+	if(this.value=="pause")
+	{
+		window.clearInterval(timer);
+		this.value="contu";
+	}
+	else if(this.value=="contu")
+	{
+		timer=setInterval('go();cycleCount=0', speed);
+		this.value="pause";
+	}
+	return false;
+}
+
+//停止
+function bstop(){
+	this.blur();
+	snak=[];
+	document.getElementById("score").value="";
+	var alltd=document.getElementsByTagName("td");
+	for(var n=0;n<alltd.length;n++)
+		alltd[n].style.background="#fff";
+	window.clearInterval(timer);
+	butstart.removeAttribute('disabled');
+	level.removeAttribute('disabled');
+	level.value="300";
+	butpause.setAttribute("disabled",true);
+	butpause.value="pause"
+	butstop.setAttribute("disabled",true);
+}
+
+
+//键盘点击
+function keyhit(evt){
+	var thiskey=(evt)?evt.which:window.event.keyCode;
+	cycleCount = cycleCount + 1;	//设置这一条是为了防止按键太快出错，比如向右走，按上左，如果太快，蛇还没向上走就向左走了，然后就直接挂了
+    if (cycleCount < 2) {
+		if(snak.dir==1 || snak.dir==3)
+		{
+			if(thiskey==40)
+			snak.dir=2;
+			else if(thiskey==38)
+			snak.dir=4;
+		}
+		else if(snak.dir==2 || snak.dir==4)
+		{
+			if(thiskey==39)
+			snak.dir=1;
+			else if(thiskey==37)
+			snak.dir=3;
+		}
+	}
+	return false;
+}
+
+</script>
+</head>
+<body >
+<div id="snake">
+<h2>PPxu的贪吃蛇</h2>
+<div id="area">
+<table id="tab">
+</table>
+</div>
+<form action="#">
+<input type="button" id="start" value="start" />
+<input type="button" id="pause" value="pause" />
+<input type="button" id="stop" value="stop" />
+<select id="level">
+<option value="300" selected="selected">轻轻松松</option>
+<option value="200">木有压力</option>
+<option value="100">注意一点</option>
+<option value="50">这个可以有</option>
+</select>
+<input type="text" id="score" value="" disabled="true" />
+
+</form>
+</div>
+</body>
+</html>
