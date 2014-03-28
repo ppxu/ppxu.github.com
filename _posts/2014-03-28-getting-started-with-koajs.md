@@ -3,7 +3,7 @@ layout: post
 title: "Koajs 快速上手"
 description: "getting started with koajs"
 category: nodejs
-tags: [nodejs, express, koajs]
+tags: [nodejs, express, koa, koajs, guide]
 ---
 {% include JB/setup %}
 
@@ -12,6 +12,7 @@ tags: [nodejs, express, koajs]
 让我们用一个简单的 hello-world 应用来演示一下：
 
 #### 首先是 Express 的版本
+
 
 {% highlight javascript %}
 var express = require('express');
@@ -26,6 +27,7 @@ app.listen(3000);
 {% endhighlight %}
 
 #### 然后我们来看看 Koa 的方式
+
 
 {% highlight javascript %}
 var koa = require('koa');
@@ -43,6 +45,7 @@ app.listen(3000);
 可能有人不知道 `function *()` 是什么，这是 ES6 中的新特性：[harmony:generators](http://wiki.ecmascript.org/doku.php?id=harmony:generators)，我们可以通过 `node --harmony` 的方式开启 [ES6 on node](http://h3manth.com/new/blog/2013/es6-on-nodejs/)。
 
 #### 让我们仔细比较一下
+
 
 {% highlight javascript %}
 // Express
@@ -63,6 +66,7 @@ app.use(function *(){
 > A Koa application is an object containing an array of middleware generator functions which are composed and executed in a stack-like manner upon request
 
 因此，对每一个请求，Koa 会创建一个新的 context 对象
+
 
 {% highlight javascript %}
 app.use(function *(){
@@ -87,6 +91,7 @@ app.use(function *(){
 
 现在我们用路由的形式重写 Koa 的 hello-world 程序：
 
+
 {% highlight javascript %}
 var koa = require('koa');
 var app = koa();
@@ -101,6 +106,7 @@ app.use(route.get('/', function *() {}
 
 而在 express 里是这样子的：
 
+
 {% highlight javascript %}
 var express = require('express');
 var app = express();
@@ -114,7 +120,7 @@ app.get('/', function(req, res){
 
 借助 ES6 的生成器函数，这是非常容易和直观的，来看看下面这个来自 Koa 文档里的例子。
 
-![koa example](https://github-camo.global.ssl.fastly.net/49c9c703465d40f1a30e0a993a4008991b76d676/68747470733a2f2f692e636c6f756475702e636f6d2f4e374c3555616b4a6f302e676966)
+![koa example](http://gtms01.alicdn.com/tps/i1/T1Xbn6FvBXXXXBTM37-800-800.gif)
 
 在上面的代码中，每一个 `yield next` 都会使得流程控制从“上游”流向“下游”，最后当没有更多的中间件后结束。
 
@@ -125,6 +131,7 @@ app.get('/', function(req, res){
 Express 使用 Connect 的方式，仅仅是将控制权在一系列函数中传递，直到有一个返回，如果你在 Express 中使用了许多的中间件，你会陷入无比混乱的回调函数噩梦。
 
 但是在 Koa 中，这是相当简单的：
+
 
 {% highlight javascript %}
 function *all(next) {
@@ -137,6 +144,7 @@ app.use(all);
 注意这个模式只是将必需的 `.call(this, next)` 串连起来。
 
 该方法还可以通过 [koa-compose](https://github.com/koajs/compose) 简化
+
 
 {% highlight javascript %}
 var co = require('co');

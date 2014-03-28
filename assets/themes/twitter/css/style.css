@@ -92,3 +92,7 @@ html, body {
 	display: inline-block;
 	vertical-align: bottom;
 }
+
+.content img {
+    max-width: 620px;
+}
