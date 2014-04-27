@@ -12,7 +12,7 @@ tags: [angular, angularjs, tutorial]
 {% highlight javascript %}
 <!DOCTYPE html>
 <head>
-    <title>Learning AngularJS</title>
+    <title>Learning AngularJS<\/title>
 </head>
 <body>
 
