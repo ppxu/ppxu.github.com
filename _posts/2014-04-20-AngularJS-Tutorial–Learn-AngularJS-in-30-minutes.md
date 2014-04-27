@@ -7,7 +7,7 @@ tags: [angular, angularjs, tutorial]
 ---
 {% include JB/setup %}
 
-在开始之前我们需要创建一个简单的包含了AngularJS的HTML页面。新建一个名为`index.html`的文件并添加以下内容：
+在我们的教程开始之前首先需要创建一个简单的包含了AngularJS的HTML页面。新建一个名为`index.html`的文件并添加以下内容：
 
 {% highlight html %}
 <!DOCTYPE html>
@@ -20,9 +20,9 @@ tags: [angular, angularjs, tutorial]
 </html>
 {% endhighlight %}
 
-现在我们有了一个可以工作的HTML页面了，在新标签页中打开AngularJS官网：[http://angularjs.org/](http://angularjs.org/)，复制最新版本AngularJS的CDN地址。或者也可以直接使用这个：__https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js__。现在你就有了如下的一个包含最新版本AngularJS的HTML页面：
+现在我们就有了一个可以工作的HTML页面，在新标签页中打开AngularJS官网：[http://angularjs.org/](http://angularjs.org/)，复制最新版本AngularJS的CDN地址。或者也可以直接使用这个：__https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js__。现在这个页面已经包含了最新版本的AngularJS：
 
-{% highlight javascript %}
+{% highlight html %}
 <!DOCTYPE html>
 <head>
     <title>Learning AngularJS</title>
@@ -34,15 +34,15 @@ tags: [angular, angularjs, tutorial]
 </html>
 {% endhighlight %}
 
-OK，准备就绪，我们开始吧。
+OK，准备就绪，让我们开始吧。
 
 ### 为AngularJS设置页面
 
-我们需要做一些工作才能让AngularJS知道需要将这个页面当做一个应用来渲染。因为这只是一个快速的AngularJS上手，我们将不会详细介绍如何创建多应用和多控制器页面，我们需要做的仅仅是将这个页面声明成一个AngularJS应用，这非常容易！
+我们需要做一些工作才能让AngularJS知道需要将这个页面当做一个应用来渲染。因为这只是一个AngularJS快速教程，我们将不会详细介绍如何创建多应用和多控制器页面，我们需要做的仅仅是将这个页面声明成一个AngularJS应用，这非常容易！
 
-如下只需将`ng-app='MyToturialApp`添加到DIV元素上：
+如下只需将`ng-app='MyToturialApp'`添加到DIV元素上：
 
-{% highlight javascript %}
+{% highlight html %}
 <!DOCTYPE html>
 <head>
     <title>Learning AngularJS</title>
@@ -54,9 +54,9 @@ OK，准备就绪，我们开始吧。
 </html>
 {% endhighlight %}
 
-这样我们就告诉了AngularJS这个DIV元素是一个Angular应用，我们还需要指定它要使用哪个控制值，方法如下：
+这样我们就告诉了AngularJS这个DIV元素是一个Angular应用，我们还需要指定它要使用哪个控制器，方法如下：
 
-{% highlight javascript %}
+{% highlight html %}
 <!DOCTYPE html>
 <head>
     <title>Learning AngularJS</title>
@@ -84,7 +84,7 @@ app.controller("MainController", function($scope){
 
 它会进行一次控制器调用，将`MainController`分配给`MyTutorialApp`应用。这些Javascript其实可以放在同一个Javascript文件中，不过将它们分开来是比较好的方法，这样可以让你的代码保持可维护性并且易于理解。记得`app.js`需要在`maincontroller.js`之前被引入。让我们把这些文件添加到HTML中，这样我们就可以进入正题了！
 
-{% highlight javascript %}
+{% highlight html %}
 <!DOCTYPE html>
 <head>
     <title>Learning AngularJS</title>
@@ -114,7 +114,7 @@ app.controller("MainController", function($scope){
 
 在上面的代码中我们简单的创建了一个作用域变量，并给它赋值了一个字符串。现在我们就能在HTML页面中取到这个值了。
 
-{% highlight javascript %}
+{% highlight html %}
 <!DOCTYPE html>
 <head>
     <title>Learning AngularJS</title>
@@ -148,7 +148,7 @@ app.controller("MainController", function($scope){
 
 然后在HTML中增加一些内容：
 
-{% highlight javascript %}
+{% highlight html %}
 <!DOCTYPE html>
 <head>
     <title>Learning AngularJS</title>
@@ -223,7 +223,7 @@ app.controller("MainController", function($scope){
 
 在这里我们声明了3个作用域变量，`selectedPerson`是用来记录当前选中人物的。`selectedGenre`是用来记录当前选中音乐类型的字符串值。最后是一个由包含人物和他们各自的音乐喜好的对象组成的数组。我们希望实现的效果是有两个下拉选择框，一个用来选择人物，另一个，依靠数据绑定，可以自动更新成当前选中人物的音乐类型。我们在HTML页面中增加以下元素：
 
-{% highlight javascript %}
+{% highlight html %}
 <!DOCTYPE html>
 <head>
     <title>Learning AngularJS</title>
@@ -262,7 +262,7 @@ app.controller("MainController", function($scope){
 
 接下来我们的教程将要介绍AngularJS的另一个超级强大的功能——过滤器。我们会继续使用上一节中的people作用域数组，并且创建一个简单的接口，可以允许我们来搜索people的名字并将结果输出到页面上。将HTML页面改成如下：
 
-{% highlight javascript %}
+{% highlight html %}
 <!DOCTYPE html>
 <head>
     <title>Learning AngularJS</title>
@@ -345,7 +345,7 @@ app.controller("MainController", function($scope){
 
 你会发现我们给每一个people对象增加了一个live属性，唯一该属性值为false的是Harry。为了能同时演示`ng-show`和`ng-hide`，在你的HTML页面中再增加一个额外的无序列表：
 
-{% highlight javascript %}
+{% highlight html %}
 <!DOCTYPE html>
 <head>
     <title>Learning AngularJS</title>
@@ -369,7 +369,7 @@ app.controller("MainController", function($scope){
 
 这样仅仅是把相同的数据输出了两次。现在我们将使用`ng-hide`和`ng-show`方法来有条件的隐藏列表元素，根据我们刚刚添加的live属性。再次更新HTML页面：
 
-{% highlight javascript %}
+{% highlight html %}
 <!DOCTYPE html>
 <head>
     <title>Learning AngularJS</title>
@@ -401,7 +401,7 @@ app.controller("MainController", function($scope){
 
 这篇AngularJS快速教程的最后一部分要来看看事件。事件一直是各种Javascript框架的重要功能，比如jQuery，在AngularJS中也是如此。为了展现这一点我们还需要在HTML页面中增加另一个输入框和按钮：
 
-{% highlight javascript %}
+{% highlight html %}
 <!DOCTYPE html>
 <head>
     <title>Learning AngularJS</title>
