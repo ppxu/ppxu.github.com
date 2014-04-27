@@ -9,10 +9,10 @@ tags: [angular, angularjs, tutorial]
 
 在开始之前我们需要创建一个简单的包含了AngularJS的HTML页面。新建一个名为`index.html`的文件并添加以下内容：
 
-{% highlight javascript %}
+{% highlight html %}
 <!DOCTYPE html>
 <head>
-    <title>Learning AngularJS<\/title>
+    <title>Learning AngularJS</title>
 </head>
 <body>
 
