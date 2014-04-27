@@ -7,9 +7,7 @@ tags: [angular, angularjs, tutorial]
 ---
 {% include JB/setup %}
 
-### 开始使用AngularJS吧
-
-在这篇教程开始之前我们需要创建一个简单的包含了AngularJS的HTML页面。新建一个名为`index.html`的文件并添加以下内容：
+在开始之前我们需要创建一个简单的包含了AngularJS的HTML页面。新建一个名为`index.html`的文件并添加以下内容：
 
 {% highlight javascript %}
 <!DOCTYPE html>
@@ -294,3 +292,207 @@ app.controller("MainController", function($scope){
 ### 使用AngularJS隐藏和显示元素
 
 AngularJS教程的这个部分将会学习如何隐藏和显示元素。我们还是会继续使用people数组作为数据集，不过我们需要增加一些额外的数据使得我们可以演示`ng-shou`和`ng-hide`两个方法。如下更新你的`maincontroller.js`文件。
+
+{% highlight javascript %}
+app.controller("MainController", function($scope){
+    $scope.people = [
+        {
+            id: 0,
+            name: 'Leon',
+            music: [
+                'Rock',
+                'Metal',
+                'Dubstep',
+                'Electro'
+            ],
+            live: true
+        },
+        {
+            id: 1,
+            name: 'Chris',
+            music: [
+                'Indie',
+                'Drumstep',
+                'Dubstep',
+                'Electro'
+            ],
+            live: true
+        },
+        {
+            id: 2,
+            name: 'Harry',
+            music: [
+                'Rock',
+                'Metal',
+                'Thrash Metal',
+                'Heavy Metal'
+            ],
+            live: false
+        },
+        {
+            id: 3,
+            name: 'Allyce',
+            music: [
+                'Pop',
+                'RnB',
+                'Hip Hop'
+            ],
+            live: true
+        }
+    ];
+});
+{% endhighlight %}
+
+你会发现我们给每一个people对象增加了一个live属性，唯一该属性值为false的是Harry。为了能同时演示`ng-show`和`ng-hide`，在你的HTML页面中再增加一个额外的无序列表：
+
+{% highlight javascript %}
+<!DOCTYPE html>
+<head>
+    <title>Learning AngularJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js" type="text/javascript"></script>
+    <script src="app.js" type="text/javascript"></script>
+    <script src="maincontroller.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id='content' ng-app='MyTutorialApp' ng-controller='MainController'>
+        <input type='text' ng-model='searchText' />
+        <ul>
+            <li ng-repeat='person in people | filter:searchText'>#{{person.id}} {{person.name}}</li>
+        </ul>
+        <ul>
+            <li ng-repeat='person in people | filter:searchText'>#{{person.id}} {{person.name}}</li>
+        </ul>
+    </div>
+</body>
+</html>
+{% endhighlight %}
+
+这样仅仅是把相同的数据输出了两次。现在我们将使用`ng-hide`和`ng-show`方法来有条件的隐藏列表元素，根据我们刚刚添加的live属性。再次更新HTML页面：
+
+{% highlight javascript %}
+<!DOCTYPE html>
+<head>
+    <title>Learning AngularJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js" type="text/javascript"></script>
+    <script src="app.js" type="text/javascript"></script>
+    <script src="maincontroller.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id='content' ng-app='MyTutorialApp' ng-controller='MainController'>
+        <input type='text' ng-model='searchText' />
+        <ul>
+            <li ng-repeat='person in people | filter:searchText' ng-show='person.live == true'>#{{person.id}} {{person.name}}</li>
+        </ul>
+        <ul>
+            <li ng-repeat='person in people | filter:searchText' ng-hide='person.live == false'>#{{person.id}} {{person.name}}</li>
+        </ul>
+    </div>
+</body>
+</html>
+{% endhighlight %}
+
+正如你看到的，`ng-hide`和`ng-show`的使用方法几乎完全一致，除了它们都是另一个的反义（显而易见）。在上面的例子中，我们使用通过`ng-repeat`得到的person变量，然后判断它的live属性是true还是false。在浏览器中打开这个例子，你会看到Harry在两个列表中不出现了。
+
+![http://www.revillwebdesign.com/wp-content/uploads/2013/05/filter2.png](http://www.revillwebdesign.com/wp-content/uploads/2013/05/filter2.png)
+
+在AngularJS中隐藏和显示元素就是如此简单。
+
+### AngularJS中的事件
+
+这篇AngularJS快速教程的最后一部分要来看看事件。事件一直是各种Javascript框架的重要功能，比如jQuery，在AngularJS中也是如此。为了展现这一点我们还需要在HTML页面中增加另一个输入框和按钮：
+
+{% highlight javascript %}
+<!DOCTYPE html>
+<head>
+    <title>Learning AngularJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js" type="text/javascript"></script>
+    <script src="app.js" type="text/javascript"></script>
+    <script src="maincontroller.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id='content' ng-app='MyTutorialApp' ng-controller='MainController'>
+        <input type='text' ng-model='searchText' />
+        <ul>
+            <li ng-repeat='person in people | filter:searchText' ng-show='person.live == true'>#{{person.id}} {{person.name}}</li>
+        </ul>
+        <input type='text' ng-model='newPerson' />
+        <button ng-click='addNew()'>Add</button>
+    </div>
+</body>
+</html>
+{% endhighlight %}
+
+我们刚刚增加了一个绑定模型`newPerson`的输入框和一个带有`ng-click`的按钮，这个会调用一个名叫`addNew`的方法。然后我们要更新`maincontroller.js`文件：
+
+{% highlight javascript %}
+app.controller("MainController", function($scope){
+    $scope.people = [
+        {
+            id: 0,
+            name: 'Leon',
+            music: [
+                'Rock',
+                'Metal',
+                'Dubstep',
+                'Electro'
+            ],
+            live: true
+        },
+        {
+            id: 1,
+            name: 'Chris',
+            music: [
+                'Indie',
+                'Drumstep',
+                'Dubstep',
+                'Electro'
+            ],
+            live: true
+        },
+        {
+            id: 2,
+            name: 'Harry',
+            music: [
+                'Rock',
+                'Metal',
+                'Thrash Metal',
+                'Heavy Metal'
+            ],
+            live: false
+        },
+        {
+            id: 3,
+            name: 'Allyce',
+            music: [
+                'Pop',
+                'RnB',
+                'Hip Hop'
+            ],
+            live: true
+        }
+    ];
+    $scope.newPerson = null;
+    $scope.addNew = function() {
+        if ($scope.newPerson != null && $scope.newPerson != "") {
+            $scope.people.push({
+                id: $scope.people.length,
+                name: $scope.newPerson,
+                live: true,
+                music: []
+            });
+        }
+    }
+});
+{% endhighlight %}
+
+这段JS中我们声明了一个`newPerson`作用域变量和一个作用域方法`addNew`，由于我们在按钮上添加了`ng-click`，它会在按钮点击的时候被调用。
+
+在`addNew`方法里我们首先检查`newPerson`值是否为空，然后在people数组的最后增加了一个新的对象。这是关于AngularJS中的点击事件如何使用的一个非常简单的例子。还有很多这类的方法比如`ng-change`，`ng-checked`，`ng-select`，等等，我们的教程不会讲到更多细节，具体的你可以到[这儿](http://docs.angularjs.org/api/)学习。
+
+### 总结
+
+这篇AngularJS快速教程应该已经帮助你了解AngularJS是如何使用的以及它的强大能力。现在你应该可以自己动手创建你的AngularJS应用来学习更多的内容。
+
+在学习AngularJS的过程中我发现它的文档不是非常好，费了很大功夫来试验和搜索来找到可用的例子。我建议你弄到一两本书，我是用[这个](http://www.amazon.com/gp/product/1449344852/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449344852&linkCode=as2&tag=revwebdes-20)作为参考书，它有一些非常好的例子。如果你在美国你可以在[这儿](http://www.amazon.com/gp/product/1449344852/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449344852&linkCode=as2&tag=revwebdes-20)买到，如果你在英国可以在[这儿](http://www.amazon.co.uk/gp/product/1449344852/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1634&creative=6738&creativeASIN=1449344852&linkCode=as2&tag=revwebdes-21)买。我希望这篇教程能帮助你在30分钟内掌握基本的AngularJS使用。请通过留言给我你的反馈意见。
+
+__原文地址__：[http://www.revillweb.com/tutorials/angularjs-in-30-minutes-angularjs-tutorial/](http://www.revillweb.com/tutorials/angularjs-in-30-minutes-angularjs-tutorial/)
