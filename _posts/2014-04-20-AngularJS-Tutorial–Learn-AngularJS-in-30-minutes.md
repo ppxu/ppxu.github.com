@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "30分钟学会AngularJS"
+title: "（译）30分钟学会AngularJS"
 description: "Angularjs Tutorial - Learn AngularJS in 30 minutes"
 category: angularjs
 tags: [angular, angularjs, tutorial]
@@ -20,7 +20,7 @@ tags: [angular, angularjs, tutorial]
 </html>
 {% endhighlight %}
 
-现在我们就有了一个可以工作的HTML页面，在新标签页中打开AngularJS官网：[http://angularjs.org/](http://angularjs.org/)，复制最新版本AngularJS的CDN地址。或者也可以直接使用这个：__https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js__。现在这个页面已经包含了最新版本的AngularJS：
+现在我们就有了一个可以工作的HTML页面，在新标签页中打开AngularJS官网：[http://angularjs.org/](http://angularjs.org/)，复制最新版本AngularJS的CDN地址。或者也可以直接使用这个：__https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js__（注：现在最新稳定版本是1.2.16）。现在这个页面就包含了最新的AngularJS：
 
 {% highlight html %}
 <!DOCTYPE html>
@@ -38,7 +38,7 @@ OK，准备就绪，让我们开始吧。
 
 ### 为AngularJS设置页面
 
-我们需要做一些工作才能让AngularJS知道需要将这个页面当做一个应用来渲染。因为这只是一个AngularJS快速教程，我们将不会详细介绍如何创建多应用和多控制器页面，我们需要做的仅仅是将这个页面声明成一个AngularJS应用，这非常容易！
+我们需要做一些工作才能让AngularJS知道要将这个页面当做一个应用来渲染。因为这只是一个AngularJS快速教程，我们不会详细介绍如何创建多应用和多控制器页面，这里我们需要做的仅仅是将这个页面声明成一个AngularJS应用，这个非常简单！
 
 如下只需将`ng-app='MyToturialApp'`添加到DIV元素上：
 
@@ -68,7 +68,7 @@ OK，准备就绪，让我们开始吧。
 </html>
 {% endhighlight %}
 
-`MainController`只是我随便起的一个名字，控制器命名应当有一些含义，因为这个控制器将处理大部分的应用程序，main看起来很合适。一些人可能质疑这个名字还是不够明确，但是对我们这个教程来说没什么问题。OK，我们现在知道`#content`DIV中的所有内容都会由`MainController`控制了，但是这个控制器在哪呢？我们需要来创建它！在你的index.html相同路径下新建一个名为`app.js`的JS文件，添加如下内容：
+`MainController`只是我随便起的一个名字，控制器命名应当有一些含义，因为这个控制器将处理大部分的应用程序，main看起来很合适。一些人可能质疑这个名字还是不够明确，但是对我们这个入门教程来说没什么影响。OK，我们现在知道`#content`DIV中的所有内容都会由`MainController`控制了，但是这个控制器在哪呢？我们需要来创建它！在你的index.html相同路径下新建一个名为`app.js`的JS文件，添加如下内容：
 
 {% highlight javascript %}
 var app = angular.module('MyTutorialApp',[]);
@@ -104,7 +104,7 @@ app.controller("MainController", function($scope){
 
 ### 理解作用域
 
-在创建`maincontroller.js`脚本的时候你可能已经注意到了一个$scope变量，我们把这个作为参数传给了控制器函数。所有需要在HTML页面的`#content`元素中生效的变量都要在这个地方声明。观察下面这个例子可以帮助你更好的理解这个概念。像这样在控制器中声明$scope变量：
+在创建`maincontroller.js`脚本的时候你可能已经注意到了一个`$scope`变量，我们把这个作为参数传给了控制器函数。所有需要在HTML页面的`#content`元素中生效的变量都要在这个地方声明。观察下面这个例子可以帮助你更好的理解这个概念。像这样在控制器中声明`$scope`变量：
 
 {% highlight javascript %}
 app.controller("MainController", function($scope){
@@ -134,7 +134,7 @@ app.controller("MainController", function($scope){
 
 ![http://www.revillwebdesign.com/wp-content/uploads/2013/05/understandscope.png](http://www.revillwebdesign.com/wp-content/uploads/2013/05/understandscope.png)
 
-现在你应该理解作用域变量的含义，并且只要用{{}}包裹起来就能在HTML页面中使用了。你还应该明白这个作用域只在该控制器内起作用，因此你不能在#content元素外面获取到"understand"变量，除非外面也定义了同样的控制器。
+现在你应该理解作用域变量的含义，并且只要用{{}}包裹起来就能在HTML页面中使用了。你还应该明白这个作用域只在该控制器内起作用，因此你不能在`#content`元素外面获取到"understand"变量，除非外面也定义了同样的控制器。
 
 ### 理解绑定
 
@@ -221,7 +221,7 @@ app.controller("MainController", function($scope){
 });
 {% endhighlight %}
 
-在这里我们声明了3个作用域变量，`selectedPerson`是用来记录当前选中人物的。`selectedGenre`是用来记录当前选中音乐类型的字符串值。最后是一个由包含人物和他们各自的音乐喜好的对象组成的数组。我们希望实现的效果是有两个下拉选择框，一个用来选择人物，另一个，依靠数据绑定，可以自动更新成当前选中人物的音乐类型。我们在HTML页面中增加以下元素：
+在这里我们声明了3个作用域变量，`selectedPerson`是用来记录当前选中Person的。`selectedGenre`是用来记录当前选中音乐类型的字符串值。最后是一个由包含Person和他们各自的音乐喜好的对象组成的数组。我们希望实现的效果是有两个下拉选择框，一个用来选择Person，另一个，依靠数据绑定，可以自动更新成当前选中Person的音乐类型。我们在HTML页面中增加以下元素：
 
 {% highlight html %}
 <!DOCTYPE html>
@@ -246,7 +246,7 @@ app.controller("MainController", function($scope){
 
 为了演示，第二个选择框用了另一种方式来填充。在我印象中，`ng-repeat`是AngularJS最有用的功能之一。`ng-repeat`可以允许你很方便的使用一个数组或者一组对象来复制HTML元素。在上面的HTML中，`ng-repeat`会对人物中的每一条音乐类型生成一个选项。和之前在输入框绑定模型的方法一样，我们在第一个选择框中声明了`selectedPerson`作为它的模型，它决定了第二个选择框的音乐数组对应的ID值。
 
-注意：`ng-repeat`可以作用在任何HTML元素上，尽管去尝试吧！
+注意：`ng-repeat`可以作用在任何HTML元素上，你可以自己去尝试！
 
 在`ng-repeat`的option元素中我们加入了`{{label}}`，它会输出我们在`ng-repeat`中定义的内容。在浏览器中打开这个页面，你将会看下如下的效果：
 
