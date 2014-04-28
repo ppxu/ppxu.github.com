@@ -7,7 +7,7 @@ tags: [angular, angularjs, tutorial]
 ---
 {% include JB/setup %}
 
-在我们的教程开始之前首先需要创建一个简单的包含了AngularJS的HTML页面。新建一个名为`index.html`的文件并添加以下内容：
+在这篇AngularJS教程开始之前，我们首先需要创建一个简单的包含了AngularJS的HTML页面。新建一个名为`index.html`的文件并添加以下内容：
 
 {% highlight html %}
 <!DOCTYPE html>

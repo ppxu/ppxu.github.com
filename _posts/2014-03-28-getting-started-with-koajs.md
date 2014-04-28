@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Koajs 快速上手"
+title: "（译）Koajs 快速上手"
 description: "getting started with koajs"
 category: nodejs
 tags: [nodejs, express, koa, koajs, guide]
